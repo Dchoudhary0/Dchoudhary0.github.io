@@ -332,3 +332,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 console.log('✦ Portfolio of Dilpreet Choudhary ✦ Interactive & loaded with love 🎀');
+
+/* ══════════════════════════════════════════════════════════════
+   11. PRISSY SPARKLES ON CONTACT CARD & BUTTON HOVER ✨
+   ══════════════════════════════════════════════════════════════ */
+const sparkleTargets = document.querySelectorAll('.contact-card, .btn-primary, .btn-secondary, .project-cta');
+const prissyChars = ['✦', '✧', '🎀', '♡', '🌸', '✨'];
+
+sparkleTargets.forEach((el) => {
+  el.addEventListener('mouseenter', (e) => {
+    const rect = el.getBoundingClientRect();
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        const s = document.createElement('div');
+        s.textContent = prissyChars[Math.floor(Math.random() * prissyChars.length)];
+        const x = rect.left + Math.random() * rect.width;
+        const y = rect.top + Math.random() * rect.height * 0.5;
+        s.style.cssText = `position:fixed;left:${x}px;top:${y}px;font-size:${0.7 + Math.random() * 0.6}rem;` +
+          `pointer-events:none;z-index:9997;color:${Math.random() > 0.5 ? '#b32d5e' : '#c9a96e'};` +
+          `transition:all 0.9s ease;opacity:1;`;
+        document.body.appendChild(s);
+        requestAnimationFrame(() => {
+          s.style.transform = `translateY(-${30 + Math.random() * 30}px) rotate(${Math.random() * 90 - 45}deg) scale(0.2)`;
+          s.style.opacity = '0';
+        });
+        setTimeout(() => s.remove(), 900);
+      }, i * 60);
+    }
+  });
+});

@@ -1146,18 +1146,51 @@ section {
 }
 .project-cta-alt:hover { background: var(--pink-light); }
 
-/* Flyer image inside a text card — responsive, dreamy framing.
-   Used by the AI Workshop Marketing & Promotion card when a flyer is added. */
+/* ✦ FLYER GALLERY — AI Workshop Marketing & Promotion card ✦
+   Responsive dreamy framing for the promotional flyers. */
+.flyer-caption {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  font-style: italic;
+  line-height: 1.65;
+  margin: 2px 0 18px;
+}
+.flyer-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.flyer-item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.flyer-item figcaption {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pink-deep);
+  text-align: center;
+  margin-top: 8px;
+}
 .project-flyer {
   display: block;
   width: 100%;
   height: auto;
-  margin: 4px 0 20px;
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: var(--shadow-soft);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: zoom-in;
 }
-.project-flyer + .project-flyer { margin-top: -8px; }
+.project-flyer:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: var(--shadow-card), 0 0 30px rgba(240, 217, 138, 0.3);
+}
+/* Phones: stack flyers in a single column */
+@media (max-width: 600px) {
+  .flyer-gallery { grid-template-columns: 1fr; }
+}
 
 /* ✦ SKILLS ✦ */
 .skills-grid {

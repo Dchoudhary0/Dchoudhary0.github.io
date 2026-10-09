@@ -1146,6 +1146,19 @@ section {
 }
 .project-cta-alt:hover { background: var(--pink-light); }
 
+/* Flyer image inside a text card — responsive, dreamy framing.
+   Used by the AI Workshop Marketing & Promotion card when a flyer is added. */
+.project-flyer {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 4px 0 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-soft);
+}
+.project-flyer + .project-flyer { margin-top: -8px; }
+
 /* ✦ SKILLS ✦ */
 .skills-grid {
   display: grid;

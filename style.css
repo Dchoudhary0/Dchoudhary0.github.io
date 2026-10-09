@@ -1105,6 +1105,7 @@ section {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card), 0 0 30px rgba(240, 217, 138, 0.3);
 }
+.skill-wide { grid-column: 1 / -1; }
 
 .skill-cat-icon {
   font-size: 2rem;

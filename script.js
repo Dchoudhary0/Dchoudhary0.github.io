@@ -74,8 +74,10 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-const petalColors = ['#f8d0de', '#e8a0b8', '#fce8ef', '#d4547a', '#e8d5a3'];
+const petalColors = ['#f8d0de', '#e8a0b8', '#fce8ef', '#d4547a', '#e8d5a3', '#c9a3e8'];
+const glowColors = ['#f0d98a', '#fff6e0', '#f8d0de', '#c9a3e8'];
 
+// Drifting petals
 class Petal {
   constructor() { this.reset(true); }
   reset(initial = false) {
@@ -103,7 +105,6 @@ class Petal {
     ctx.rotate((this.rotation * Math.PI) / 180);
     ctx.globalAlpha = this.opacity;
     ctx.fillStyle = this.color;
-    // petal shape
     ctx.beginPath();
     ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
     ctx.fill();
@@ -111,11 +112,57 @@ class Petal {
   }
 }
 
-const petalCount = window.innerWidth < 768 ? 18 : 35;
+// Glowing twinkling sparkles / bokeh orbs
+class Glow {
+  constructor() { this.reset(true); }
+  reset(initial = false) {
+    this.x = Math.random() * canvas.width;
+    this.y = initial ? Math.random() * canvas.height : canvas.height + 20;
+    this.radius = Math.random() * 3 + 1;
+    this.speedY = -(Math.random() * 0.5 + 0.2);
+    this.speedX = Math.random() * 0.4 - 0.2;
+    this.color = glowColors[Math.floor(Math.random() * glowColors.length)];
+    this.twinkleSpeed = Math.random() * 0.04 + 0.01;
+    this.twinkle = Math.random() * Math.PI * 2;
+    this.baseOpacity = Math.random() * 0.5 + 0.3;
+  }
+  update() {
+    this.y += this.speedY;
+    this.x += this.speedX;
+    this.twinkle += this.twinkleSpeed;
+    if (this.y < -20) this.reset();
+  }
+  draw() {
+    const op = this.baseOpacity * (0.5 + 0.5 * Math.sin(this.twinkle));
+    ctx.save();
+    ctx.globalAlpha = op;
+    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 4);
+    grad.addColorStop(0, this.color);
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius * 4, 0, Math.PI * 2);
+    ctx.fill();
+    // bright core
+    ctx.globalAlpha = op;
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius * 0.6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+const isMobile = window.innerWidth < 768;
+const petalCount = isMobile ? 14 : 28;
+const glowCount = isMobile ? 20 : 45;
 for (let i = 0; i < petalCount; i++) petals.push(new Petal());
+const glows = [];
+for (let i = 0; i < glowCount; i++) glows.push(new Glow());
 
 function animatePetals() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  glows.forEach((g) => { g.update(); g.draw(); });
   petals.forEach((p) => { p.update(); p.draw(); });
   requestAnimationFrame(animatePetals);
 }

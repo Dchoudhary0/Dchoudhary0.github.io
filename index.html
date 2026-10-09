@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dilpreet Choudhary ✦ Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ✦ CUSTOM CURSOR ✦ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ✦ FALLING PETALS CANVAS ✦ -->
+  <canvas id="petalsCanvas" class="petals-canvas"></canvas>
+
+  <!-- ✦ PROGRESS BAR ✦ -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ✦ FLOATING BOWS DECORATION ✦ -->
+  <div class="bow-decor bow-top-left">🎀</div>
+  <div class="bow-decor bow-top-right">🎀</div>
+  <div class="bow-decor bow-mid-left">🌸</div>
+  <div class="bow-decor bow-mid-right">🎀</div>
+
+  <!-- ✦ NAVIGATION ✦ -->
+  <nav class="navbar">
+    <div class="nav-logo">✦ DC ✦</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ✦ HERO SECTION ✦ -->
+  <section class="hero" id="home">
+    <div class="hero-ribbon ribbon-left"></div>
+    <div class="hero-ribbon ribbon-right"></div>
+
+    <div class="hero-content">
+      <div class="hero-photo-wrapper">
+        <div class="photo-bow">🎀</div>
+        <img src="assets/dilpreet.jpg" alt="Dilpreet Choudhary" class="hero-photo" onerror="this.onerror=null; this.src='assets/dilpreet.svg';" />
+        <div class="hero-photo-placeholder">DC</div>
+      </div>
+
+      <div class="hero-text">
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name">Dilpreet<br/><em>Choudhary</em></h1>
+        <div class="hero-divider">
+          <span class="divider-bow">🎀</span>
+        </div>
+        <p class="hero-title">Computer Science Student & Tech Enthusiast</p>
+        <p class="hero-subtitle">University of Arizona · Class of 2028</p>
+        <div class="hero-badges">
+          <span class="badge">✦ Dean's List</span>
+          <span class="badge">✦ GPA 3.5</span>
+          <span class="badge">✦ Global Scholar</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">Say Hello ✦</a>
+          <a href="#projects" class="btn-secondary">My Work</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>scroll down</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ✦ ABOUT SECTION ✦ -->
+  <section class="about" id="about">
+    <div class="section-header">
+      <span class="section-tag">✦ who i am ✦</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="title-bow">🎀</div>
+    </div>
+
+    <div class="about-content">
+      <div class="about-card">
+        <p class="about-text">
+          I'm a Computer Science student at the <strong>University of Arizona</strong> with a minor in Business Administration, 
+          passionate about the intersection of technology, creativity, and people. 
+        </p>
+        <p class="about-text">
+          From building AI workshops to designing dreamy browser games, I love creating things that are 
+          both technically strong and genuinely beautiful. When I'm not coding, you'll find me teaching, 
+          leading teams, or planting trees 🌳
+        </p>
+        <p class="about-text">
+          I speak <strong>English, Hindi, Punjabi</strong>, and a little <strong>French</strong> — 
+          and I believe good communication is the most underrated tech skill.
+        </p>
+      </div>
+
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-number">3.5</span>
+          <span class="stat-label">GPA</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">2×</span>
+          <span class="stat-label">Dean's List</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Languages</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Roles Held</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✦ EXPERIENCE SECTION ✦ -->
+  <section class="experience" id="experience">
+    <div class="section-header">
+      <span class="section-tag">✦ my journey ✦</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="title-bow">🎀</div>
+      <p class="section-hint">✨ click any card to expand it ✨</p>
+    </div>
+
+    <!-- Interactive Filter Buttons -->
+    <div class="exp-filters">
+      <button class="filter-btn active" data-filter="all">All ✦</button>
+      <button class="filter-btn" data-filter="tech">Tech 💻</button>
+      <button class="filter-btn" data-filter="teaching">Teaching 🌸</button>
+      <button class="filter-btn" data-filter="leadership">Leadership 👑</button>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item" data-category="tech teaching">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card" tabindex="0">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">AI+ Studio Student Assistant</h3>
+              <p class="tl-org">University of Arizona Libraries</p>
+            </div>
+            <span class="tl-date">Sep 2026 – Present</span>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-list">
+              <li>Support students, faculty & staff with AI tools and responsible AI use</li>
+              <li>Develop interactive AI workshops for learning, creativity & productivity</li>
+              <li>Explain AI concepts to users across all levels of technical experience</li>
+            </ul>
+            <div class="tl-tags">
+              <span>AI Tools</span><span>Workshops</span><span>Gemini</span><span>NotebookLM</span>
+            </div>
+          </div>
+          <span class="tl-expand-icon">＋</span>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-category="leadership">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card" tabindex="0">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">Student Worker – Language Training Center</h3>
+              <p class="tl-org">University of Arizona</p>
+            </div>
+            <span class="tl-date">Sep 2026 – Present</span>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-list">
+              <li>Support language-training programs serving U.S. Army personnel</li>
+              <li>Assist with enrollment, scheduling, records & professional correspondence</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Administration</span><span>Communication</span><span>Organization</span>
+            </div>
+          </div>
+          <span class="tl-expand-icon">＋</span>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-category="tech">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card" tabindex="0">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">UI Intern</h3>
+              <p class="tl-org">Tectoro · Bengaluru, India</p>
+            </div>
+            <span class="tl-date">Jun – Aug 2025</span>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-list">
+              <li>Created wireframes & interface designs using Figma</li>
+              <li>Contributed to UI changes using React and TSX</li>
+              <li>Collaborated with UX team on layouts and user flows</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Figma</span><span>React</span><span>TSX</span><span>UI/UX</span>
+            </div>
+          </div>
+          <span class="tl-expand-icon">＋</span>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-category="tech teaching">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card" tabindex="0">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">Python Teaching Assistant</h3>
+              <p class="tl-org">Department of Computer Science, U of A</p>
+            </div>
+            <span class="tl-date">Jan – May 2025</span>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-list">
+              <li>Helped students with Python, debugging & introductory data structures</li>
+              <li>Guided students through programming problems with patience & clarity</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Python</span><span>Teaching</span><span>Data Structures</span>
+            </div>
+          </div>
+          <span class="tl-expand-icon">＋</span>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-category="leadership teaching">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card" tabindex="0">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">Student Lead & Trainer</h3>
+              <p class="tl-org">Starbucks · Arizona Student Unions</p>
+            </div>
+            <span class="tl-date">Jan 2025 – Sep 2026</span>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-list">
+              <li>Led shifts & coordinated team workflow during high-volume campus operations</li>
+              <li>Trained new employees on service, POS systems & safety procedures</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Leadership</span><span>Training</span><span>Team Management</span>
+            </div>
+          </div>
+          <span class="tl-expand-icon">＋</span>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-category="leadership">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card" tabindex="0">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">Founder & Director</h3>
+              <p class="tl-org">Project Save Trees</p>
+            </div>
+            <span class="tl-date">May 2021</span>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-list">
+              <li>Founded an environmental initiative organizing tree-planting with schools & volunteers</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Leadership</span><span>Community</span><span>Environment</span>
+            </div>
+          </div>
+          <span class="tl-expand-icon">＋</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ✦ PROJECTS SECTION ✦ -->
+  <section class="projects" id="projects">
+    <div class="section-header">
+      <span class="section-tag">✦ what i've built ✦</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="title-bow">🎀</div>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card featured">
+        <div class="project-img-wrapper">
+          <img src="assets/dream-collision.jpg" alt="Dream Collision Game" class="project-img" onerror="this.onerror=null; this.src='assets/dream-collision.svg';" />
+          <div class="project-overlay">
+            <a href="https://dream-collision.onrender.com" target="_blank" class="project-link">Play Now ✦</a>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">Featured Project ✦</div>
+          <h3 class="project-title">Dream Collision</h3>
+          <p class="project-desc">
+            A dreamy browser escape game featuring 4 levels, 3 enchanted worlds, and 8 unique characters. 
+            Built with AI-assisted art created through prompting. Play solo or with friends across 
+            Ribbon Moon Garden, Pearl Ocean Palace, and Strawberry Ballroom.
+          </p>
+          <div class="project-tech">
+            <span>Browser Game</span><span>AI Art</span><span>ChatGPT</span><span>Creative Design</span>
+          </div>
+          <a href="https://dream-collision.onrender.com" target="_blank" class="project-cta">
+            Visit Project ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🤖</div>
+        <div class="project-info">
+          <div class="project-tag">AI & Education</div>
+          <h3 class="project-title">AI Workshop Series</h3>
+          <p class="project-desc">
+            Designed and facilitated interactive AI learning activities for the University of Arizona Libraries 
+            AI+ Studio, making AI tools accessible to students, faculty, and staff across all experience levels.
+          </p>
+          <div class="project-tech">
+            <span>AI Tools</span><span>Gemini</span><span>NotebookLM</span><span>Education</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🌳</div>
+        <div class="project-info">
+          <div class="project-tag">Leadership & Impact</div>
+          <h3 class="project-title">Project Save Trees</h3>
+          <p class="project-desc">
+            Founded and directed a community environmental initiative that organized tree-planting 
+            activities with local schools and volunteers, demonstrating leadership beyond the classroom.
+          </p>
+          <div class="project-tech">
+            <span>Community</span><span>Leadership</span><span>Environmental</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🎨</div>
+        <div class="project-info">
+          <div class="project-tag">UI/UX Design</div>
+          <h3 class="project-title">Tectoro UI Redesign</h3>
+          <p class="project-desc">
+            Contributed to UI/UX improvements at Tectoro, an international tech company. 
+            Designed wireframes, improved user flows, and implemented interface changes using Figma and React/TSX.
+          </p>
+          <div class="project-tech">
+            <span>Figma</span><span>React</span><span>TSX</span><span>Wireframing</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ✦ SKILLS SECTION ✦ -->
+  <section class="skills" id="skills">
+    <div class="section-header">
+      <span class="section-tag">✦ my toolbox ✦</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="title-bow">🎀</div>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-category">
+        <div class="skill-cat-icon">💻</div>
+        <h3>Programming</h3>
+        <div class="skill-pills">
+          <span>Python</span>
+          <span>Java</span>
+          <span>Data Structures</span>
+          <span>Debugging</span>
+          <span>Programming Fundamentals</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-icon">🛠️</div>
+        <h3>Technical</h3>
+        <div class="skill-pills">
+          <span>Figma</span>
+          <span>React / TSX</span>
+          <span>Git & GitHub</span>
+          <span>Jupyter</span>
+          <span>AI Tools</span>
+          <span>Gemini</span>
+          <span>NotebookLM</span>
+          <span>VS Code</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-icon">🌸</div>
+        <h3>Professional</h3>
+        <div class="skill-pills">
+          <span>Public Speaking</span>
+          <span>Teaching</span>
+          <span>Team Leadership</span>
+          <span>Workshop Facilitation</span>
+          <span>Student Support</span>
+          <span>Communication</span>
+          <span>Organization</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-icon">🗣️</div>
+        <h3>Languages</h3>
+        <div class="skill-pills">
+          <span>English</span>
+          <span>Hindi</span>
+          <span>Punjabi</span>
+          <span>French (Basic)</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ✦ EDUCATION SECTION ✦ -->
+  <section class="education" id="education">
+    <div class="section-header">
+      <span class="section-tag">✦ my education ✦</span>
+      <h2 class="section-title">Education</h2>
+      <div class="title-bow">🎀</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-info">
+        <h3>University of Arizona</h3>
+        <p class="edu-degree">B.S. Computer Science · Minor in Business Administration</p>
+        <p class="edu-location">Tucson, AZ · Expected May 2028</p>
+        <div class="edu-badges">
+          <span>✦ GPA: 3.5 / 4.0</span>
+          <span>✦ Dean's List (2×)</span>
+          <span>✦ Global Wildcat Scholarship</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✦ CONTACT SECTION ✦ -->
+  <section class="contact" id="contact">
+    <div class="section-header">
+      <span class="section-tag">✦ let's connect ✦</span>
+      <h2 class="section-title">Say Hello</h2>
+      <div class="title-bow">🎀</div>
+    </div>
+
+    <div class="contact-content">
+      <p class="contact-intro">
+        Whether it's an opportunity, a collaboration, or just a hello — my inbox is always open 💌
+      </p>
+
+      <div class="contact-cards">
+        <a href="mailto:dchoudhary@arizona.edu" class="contact-card">
+          <span class="contact-icon">✉️</span>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">dchoudhary@arizona.edu</span>
+        </a>
+        <a href="https://www.linkedin.com/in/dilpreet-choudhary-40729a323/" target="_blank" class="contact-card">
+          <span class="contact-icon">💼</span>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">dilpreet-choudhary</span>
+        </a>
+        <a href="https://dream-collision.onrender.com" target="_blank" class="contact-card">
+          <span class="contact-icon">🎮</span>
+          <span class="contact-label">Dream Collision</span>
+          <span class="contact-value">dream-collision.onrender.com</span>
+        </a>
+      </div>
+
+      <div class="contact-bow-footer">🎀 ✦ 🎀</div>
+    </div>
+  </section>
+
+  <!-- ✦ FOOTER ✦ -->
+  <footer class="footer">
+    <p>✦ Dilpreet Choudhary · 2026 ✦</p>
+    <p class="footer-sub">Made with love & a little magic 🎀</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

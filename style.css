@@ -64,20 +64,19 @@ body {
   inset: -6%;
   width: 112%;
   height: 112%;
-  background-image: url("assets/background.jpg");
-  /* The uploaded image is 3 scenes wide — zoom into the LEFT (moonlit palace) 🌙
-     background-size 300% makes one-third fill the screen; position 0% picks the left third */
-  background-size: 300% 100%;
-  background-position: 0% center;
+  /* Custom hand-built moonlit palace scene 🌙 (no upload needed) */
+  background-image: url("assets/palace-bg.svg");
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  filter: blur(6px) brightness(1.05) saturate(1.1);
+  filter: blur(4px) brightness(1.04) saturate(1.08);
   transform-origin: center;
-  animation: kenBurns 30s ease-in-out infinite alternate;
+  animation: kenBurns 32s ease-in-out infinite alternate;
 }
 @keyframes kenBurns {
-  0%   { transform: scale(1.05) translate(0, 0); }
-  50%  { transform: scale(1.15) translate(-1.5%, -1.5%); }
-  100% { transform: scale(1.08) translate(1%, 1%); }
+  0%   { transform: scale(1.06) translate(0, 0); }
+  50%  { transform: scale(1.16) translate(-1.5%, -1.5%); }
+  100% { transform: scale(1.09) translate(1%, 1%); }
 }
 
 /* soft pink dreamy overlay so content stays readable */

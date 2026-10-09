@@ -990,12 +990,14 @@ section {
 .project-img-wrapper {
   position: relative;
   overflow: hidden;
-  min-height: 260px;
+  min-height: 300px;
+  background: linear-gradient(135deg, #f3d4e0, #e8b8cf);
 }
 .project-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.5s;
 }
 .project-img-wrapper:hover .project-img { transform: scale(1.05); }

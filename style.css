@@ -2026,6 +2026,8 @@ button:focus-visible,
 .poster {
   position: relative;
   display: block;
+  align-self: start;
+  height: fit-content;
   text-decoration: none;
   background: #1b1026;
   border-radius: 10px;

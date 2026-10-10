@@ -15,7 +15,7 @@
   --gold-bright: #f0d98a;
   --text-dark: #2a1420;
   --text-mid: #4a2838;
-  --text-light: #7a4a60;
+  --text-light: #6b3a52;
   --white: #ffffff;
   --glass: rgba(255, 255, 255, 0.55);
   --glass-border: rgba(255, 255, 255, 0.6);
@@ -42,10 +42,7 @@ body {
   overflow-x: hidden;
   line-height: 1.7;
 }
-@media (hover: hover) and (pointer: fine) {
-  body { cursor: none; }
-  a, button, .timeline-card, .skill-pills span, .filter-btn { cursor: none; }
-}
+/* Keep the normal system cursor usable; the decorative dot/ring just adds flair. */
 
 /* ✦═══════════════════════════════════════════════════════✦
    DREAMY FANTASY BACKGROUND
@@ -420,6 +417,30 @@ body {
 
 .nav-links a:hover { color: var(--pink-deep); }
 .nav-links a:hover::after { width: 100%; }
+
+/* Mobile hamburger — hidden on desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--pink-deep);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ✦ SECTION COMMONS ✦ */
 section {
@@ -1506,4 +1527,126 @@ section {
   .tl-header { flex-direction: column; }
 
   .contact-cards { flex-direction: column; align-items: center; }
+}
+
+/* ✦═══════════════════════════════════════════════════════✦
+   ACCESSIBILITY, SIGNATURE BOW & POLISH (refinement pass)
+   ✦═══════════════════════════════════════════════════════✦ */
+
+/* Skip link — visible only on keyboard focus */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: -60px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: var(--pink-deep);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0 0 12px 12px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  transition: top 0.25s ease;
+}
+.skip-link:focus { top: 0; }
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+.timeline-card:focus-visible,
+.skill-pills span:focus-visible,
+.contact-card:focus-visible,
+.project-cta:focus-visible,
+.filter-btn:focus-visible {
+  outline: 3px solid var(--pink-deep);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Signature bow accent beside the name */
+.name-bow {
+  display: inline-block;
+  font-size: 0.55em;
+  margin-right: 0.25em;
+  vertical-align: middle;
+  animation: bowSway 5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+@keyframes bowSway {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+/* Hero social (GitHub / LinkedIn) under the main buttons */
+.hero-social {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.9rem;
+}
+.hero-social a {
+  color: var(--text-mid);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+.hero-social a:hover { color: var(--pink-deep); }
+.hero-social-sep { color: var(--pink-mid); }
+
+/* Secondary contact card (Handshake) — slightly understated */
+.contact-card-secondary { opacity: 0.9; }
+
+/* ✦ REDUCED MOTION — respect user setting ✦ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .petals-canvas { display: none; }
+  .cursor-dot, .cursor-ring { display: none; }
+  .dream-image { animation: none; }
+  .fade-in { opacity: 1; transform: none; }
+}
+
+/* ✦ MOBILE NAV MENU ✦ */
+@media (max-width: 760px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(75vw, 300px);
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    padding: 40px;
+    background: rgba(255, 250, 253, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: -8px 0 40px rgba(155, 111, 201, 0.18);
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-links a { font-size: 1.05rem; }
+}
+
+/* ✦ SMALL-SCREEN READABILITY — no tiny text, no horizontal scroll ✦ */
+@media (max-width: 480px) {
+  html { font-size: 15px; }
+  .hero-name { font-size: 2.4rem; }
+  .hero-title { font-size: 1.1rem; }
+  .section-title { font-size: 2rem; }
+  .project-title { font-size: 1.6rem; }
+  .flyer-gallery { grid-template-columns: 1fr; }
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+  .hero-cta { flex-direction: column; width: 100%; }
 }

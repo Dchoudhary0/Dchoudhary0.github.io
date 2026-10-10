@@ -89,7 +89,7 @@ class Petal {
     this.rotation = Math.random() * 360;
     this.rotationSpeed = Math.random() * 2 - 1;
     this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
-    this.opacity = Math.random() * 0.5 + 0.3;
+    this.opacity = Math.random() * 0.3 + 0.18;
     this.sway = Math.random() * 0.02 + 0.01;
     this.swayOffset = Math.random() * Math.PI * 2;
   }
@@ -153,20 +153,28 @@ class Glow {
   }
 }
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = window.innerWidth < 768;
-const petalCount = isMobile ? 14 : 28;
-const glowCount = isMobile ? 20 : 45;
-for (let i = 0; i < petalCount; i++) petals.push(new Petal());
+// Subtler particle counts than before
+const petalCount = isMobile ? 8 : 16;
+const glowCount = isMobile ? 12 : 26;
 const glows = [];
-for (let i = 0; i < glowCount; i++) glows.push(new Glow());
 
-function animatePetals() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  glows.forEach((g) => { g.update(); g.draw(); });
-  petals.forEach((p) => { p.update(); p.draw(); });
-  requestAnimationFrame(animatePetals);
+if (!prefersReducedMotion) {
+  for (let i = 0; i < petalCount; i++) petals.push(new Petal());
+  for (let i = 0; i < glowCount; i++) glows.push(new Glow());
+
+  function animatePetals() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    glows.forEach((g) => { g.update(); g.draw(); });
+    petals.forEach((p) => { p.update(); p.draw(); });
+    requestAnimationFrame(animatePetals);
+  }
+  animatePetals();
+} else if (canvas) {
+  // Respect reduced-motion: no drifting particles at all
+  canvas.style.display = 'none';
 }
-animatePetals();
 
 /* ══════════════════════════════════════════════════════════════
    3. SCROLL PROGRESS BAR
@@ -361,3 +369,28 @@ sparkleTargets.forEach((el) => {
     }
   });
 });
+
+/* ══════════════════════════════════════════════════════════════
+   12. MOBILE NAV TOGGLE (hamburger menu)
+   ══════════════════════════════════════════════════════════════ */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (navToggle && navLinks) {
+  const closeMenu = () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  // Close the menu after tapping a link
+  navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+}

@@ -2069,6 +2069,28 @@ button:focus-visible,
   letter-spacing: 0.04em;
   color: var(--pink-light);
 }
+/* Small link under the poster wall for the extra tool-guide flyer */
+.poster-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 8px 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--pink-light);
+  border: 1.5px solid rgba(201, 167, 255, 0.4);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+.poster-more-btn:hover {
+  color: var(--white);
+  background: rgba(201, 167, 255, 0.15);
+  border-color: var(--pink-mid);
+  transform: translateY(-1px);
+}
 /* When an odd number of posters leaves the last one alone,
    center it across both columns at normal size (no stretching) */
 .poster:last-child:nth-child(odd) {

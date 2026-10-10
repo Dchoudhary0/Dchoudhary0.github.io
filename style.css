@@ -1321,7 +1321,44 @@ section {
 }
 
 /* ✦ CONTACT ✦ */
-.contact { padding: 100px 60px; text-align: center; }
+.contact {
+  padding: 100px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✦ GLOWY "LIGHT" — a soft light source that gently breathes behind
+   the Contact section, giving the page a warm, lit finish. ✦ */
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: min(760px, 85vw);
+  height: min(760px, 85vw);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(216, 199, 161, 0.5) 0%,
+    rgba(183, 167, 204, 0.3) 38%,
+    rgba(140, 90, 116, 0.12) 60%,
+    transparent 72%);
+  filter: blur(42px);
+  pointer-events: none;
+  z-index: 0;
+  animation: contactGlow 7s ease-in-out infinite;
+}
+@keyframes contactGlow {
+  0%, 100% { opacity: 0.65; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact::before { animation: none; opacity: 0.8; }
+}
+/* keep the section content above the glow */
+.contact .section-header,
+.contact .contact-content { position: relative; z-index: 1; }
 
 .contact-intro {
   font-family: var(--font-serif);

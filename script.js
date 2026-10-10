@@ -74,8 +74,9 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-const petalColors = ['#f8d0de', '#e8a0b8', '#fce8ef', '#d4547a', '#e8d5a3', '#c9a3e8'];
-const glowColors = ['#f0d98a', '#fff6e0', '#f8d0de', '#c9a3e8'];
+// Muted, professional ambient particle tones (soft neutrals, no bright pink)
+const petalColors = ['#e4d7de', '#c3a9b6', '#d9c7a1', '#b7a7cc', '#efe8ec', '#cdbcc8'];
+const glowColors = ['#d9c7a1', '#efe8ec', '#c3a9b6', '#b7a7cc'];
 
 // Drifting petals
 class Petal {
@@ -89,7 +90,7 @@ class Petal {
     this.rotation = Math.random() * 360;
     this.rotationSpeed = Math.random() * 2 - 1;
     this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
-    this.opacity = Math.random() * 0.3 + 0.18;
+    this.opacity = Math.random() * 0.18 + 0.08;
     this.sway = Math.random() * 0.02 + 0.01;
     this.swayOffset = Math.random() * Math.PI * 2;
   }
@@ -357,7 +358,7 @@ sparkleTargets.forEach((el) => {
         const x = rect.left + Math.random() * rect.width;
         const y = rect.top + Math.random() * rect.height * 0.5;
         s.style.cssText = `position:fixed;left:${x}px;top:${y}px;font-size:${0.7 + Math.random() * 0.6}rem;` +
-          `pointer-events:none;z-index:9997;color:${Math.random() > 0.5 ? '#b32d5e' : '#c9a96e'};` +
+          `pointer-events:none;z-index:9997;color:${Math.random() > 0.5 ? '#8c5a74' : '#b89a6a'};` +
           `transition:all 0.9s ease;opacity:1;`;
         document.body.appendChild(s);
         requestAnimationFrame(() => {
@@ -394,3 +395,66 @@ if (navToggle && navLinks) {
     if (e.key === 'Escape') closeMenu();
   });
 }
+
+/* ══════════════════════════════════════════════════════════════
+   13. BOW + SPARKLE BURST ON BUTTON CLICK ✦🎀✧
+   A little celebration bursts from the click point on any button.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  const CLICK_SELECTOR =
+    '.btn-primary, .btn-secondary, .project-cta, .filter-btn, .contact-card, .project-link, .flyer-btn';
+
+  const burstChars = ['🎀', '✦', '✧', '🎀', '✦', '·'];
+
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest(CLICK_SELECTOR);
+    if (!target) return;
+
+    // Quick tactile press-down
+    target.classList.add('is-pressed');
+    setTimeout(() => target.classList.remove('is-pressed'), 120);
+
+    if (prefersReducedMotion) return;
+
+    const originX = e.clientX;
+    const originY = e.clientY;
+    const count = 12;
+
+    for (let i = 0; i < count; i++) {
+      const piece = document.createElement('div');
+      const char = burstChars[Math.floor(Math.random() * burstChars.length)];
+      const isBow = char === '🎀';
+      piece.textContent = char;
+
+      // Launch each piece outward in a random direction (full circle burst)
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 40 + Math.random() * 70;
+      const dx = Math.cos(angle) * distance;
+      const dy = Math.sin(angle) * distance - 20; // slight upward bias
+      const rot = Math.random() * 160 - 80;
+      const size = isBow ? 1.1 + Math.random() * 0.5 : 0.7 + Math.random() * 0.7;
+      const color = Math.random() > 0.5 ? '#8c5a74' : '#b89a6a';
+
+      piece.style.cssText =
+        `position:fixed;left:${originX}px;top:${originY}px;` +
+        `font-size:${size}rem;pointer-events:none;z-index:9998;` +
+        `color:${color};transform:translate(-50%,-50%) scale(0.4);` +
+        `transition:transform 0.75s cubic-bezier(0.18,0.75,0.3,1),opacity 0.75s ease;opacity:1;`;
+
+      document.body.appendChild(piece);
+
+      requestAnimationFrame(() => {
+        piece.style.transform =
+          `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) ` +
+          `rotate(${rot}deg) scale(${isBow ? 1 : 0.9})`;
+        piece.style.opacity = '0';
+      });
+
+      setTimeout(() => piece.remove(), 800);
+    }
+  });
+})();

@@ -1724,10 +1724,16 @@ button:focus-visible,
 
 /* ─── Section band backgrounds (were near-white) ─── */
 .about,
-.projects {
+.projects,
+.education {
   background: rgba(30, 18, 48, 0.5) !important;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+}
+/* Education band had a white border + rounded box that looked washed-out
+   on dark — make it a clean soft-pink framed panel to match the rest. */
+.education {
+  border: 1px solid rgba(255, 111, 176, 0.18) !important;
 }
 
 /* ─── Surfaces: dark glass cards with soft pink borders ─── */

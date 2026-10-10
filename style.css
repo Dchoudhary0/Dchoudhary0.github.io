@@ -2035,6 +2035,7 @@ button:focus-visible,
 .poster:nth-child(2) { transform: rotate(1.5deg); }
 .poster:nth-child(3) { transform: rotate(2deg); }
 .poster:nth-child(4) { transform: rotate(-1.5deg); }
+.poster:nth-child(5) { transform: rotate(1deg); }
 .poster:hover {
   transform: rotate(0deg) scale(1.05);
   box-shadow: 0 14px 34px rgba(255, 91, 166, 0.35);
@@ -2062,6 +2063,11 @@ button:focus-visible,
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   color: var(--pink-light);
+}
+/* When an odd number of posters leaves the last one alone,
+   let it span the full width so no empty cell is left behind */
+.poster:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 /* ─── Tectoro: interface preview mockup ─── */

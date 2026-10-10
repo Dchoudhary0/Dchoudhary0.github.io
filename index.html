@@ -74,13 +74,13 @@
 
     <div class="hero-content">
       <div class="hero-photo-wrapper">
-        <img src="assets/headshot.png" alt="Portrait of Dilpreet Choudhary" class="hero-photo" onerror="this.onerror=null; this.src='assets/dilpreet.svg';" />
+        <img src="assets/headshot.png" alt="Portrait of Dilpreet Choudhary" class="hero-photo" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';" />
         <div class="hero-photo-placeholder">DC</div>
       </div>
 
       <div class="hero-text">
         <p class="hero-greeting">Hello, I'm</p>
-        <h1 class="hero-name"><span class="name-bow" aria-hidden="true">🎀</span>Dilpreet<br/><em>Choudhary</em></h1>
+        <h1 class="hero-name">Dilpreet<br/><em>Choudhary</em></h1>
         <div class="hero-divider">
           <span class="divider-mark">✦</span>
         </div>
@@ -216,45 +216,33 @@
             <span>Generative AI</span><span>Prompt Engineering</span><span>Visual Design</span><span>Workshop Promotion</span><span>Creative Communication</span><span>Student Outreach</span>
           </div>
 
-          <!-- ✦ FLYER GALLERY ✦ -->
+          <!-- ✦ FLYER GALLERY — click-to-view buttons (clean, professional) ✦ -->
           <p class="flyer-caption">
             ✦ Promotional flyers I conceived and designed to market AI+ Studio workshops —
             I developed the concepts, visuals, and student-focused messaging using generative AI
-            and iterative prompting.
+            and iterative prompting. Click any flyer to view the full design.
           </p>
-          <div class="flyer-gallery">
-            <figure class="flyer-item">
-              <a href="assets/flyer-ai-study-buddy.png" target="_blank" rel="noopener">
-                <img src="assets/flyer-ai-study-buddy.png"
-                     alt="&quot;Stuck on a Topic? Meet Your AI Study Buddy&quot; flyer I designed for the AI+ Studio" class="project-flyer"
-                     loading="lazy" onerror="this.closest('.flyer-item').style.display='none';" />
-              </a>
-              <figcaption>AI Study Buddy</figcaption>
-            </figure>
-            <figure class="flyer-item">
-              <a href="assets/flyer-claude-workshop.png" target="_blank" rel="noopener">
-                <img src="assets/flyer-claude-workshop.png"
-                     alt="Claude Code Workshop flyer I designed for the AI+ Studio" class="project-flyer"
-                     loading="lazy" onerror="this.closest('.flyer-item').style.display='none';" />
-              </a>
-              <figcaption>Claude Code Workshop</figcaption>
-            </figure>
-            <figure class="flyer-item">
-              <a href="assets/flyer-ai-music-challenge.png" target="_blank" rel="noopener">
-                <img src="assets/flyer-ai-music-challenge.png"
-                     alt="AI Music Challenge step-by-step pamphlet I designed for the AI+ Studio" class="project-flyer"
-                     loading="lazy" onerror="this.closest('.flyer-item').style.display='none';" />
-              </a>
-              <figcaption>AI Music Challenge</figcaption>
-            </figure>
-            <figure class="flyer-item">
-              <a href="assets/flyer-exam-generator.png" target="_blank" rel="noopener">
-                <img src="assets/flyer-exam-generator.png"
-                     alt="AI Practice Exam Generator flyer I designed for the AI+ Studio" class="project-flyer"
-                     loading="lazy" onerror="this.closest('.flyer-item').style.display='none';" />
-              </a>
-              <figcaption>AI Practice Exam Generator</figcaption>
-            </figure>
+          <div class="flyer-buttons">
+            <a href="assets/flyer-ai-study-buddy.png" target="_blank" rel="noopener" class="flyer-btn">
+              <span class="flyer-btn-icon">🖼️</span>
+              <span class="flyer-btn-label">AI Study Buddy</span>
+              <span class="flyer-btn-view">View flyer ↗</span>
+            </a>
+            <a href="assets/flyer-claude-workshop.png" target="_blank" rel="noopener" class="flyer-btn">
+              <span class="flyer-btn-icon">🖼️</span>
+              <span class="flyer-btn-label">Claude Code Workshop</span>
+              <span class="flyer-btn-view">View flyer ↗</span>
+            </a>
+            <a href="assets/flyer-ai-music-challenge.png" target="_blank" rel="noopener" class="flyer-btn">
+              <span class="flyer-btn-icon">🖼️</span>
+              <span class="flyer-btn-label">AI Music Challenge</span>
+              <span class="flyer-btn-view">View flyer ↗</span>
+            </a>
+            <a href="assets/flyer-exam-generator.png" target="_blank" rel="noopener" class="flyer-btn">
+              <span class="flyer-btn-icon">🖼️</span>
+              <span class="flyer-btn-label">AI Practice Exam Generator</span>
+              <span class="flyer-btn-view">View flyer ↗</span>
+            </a>
           </div>
 
           <!-- ========================================================================= -->

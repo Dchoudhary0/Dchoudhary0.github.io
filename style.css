@@ -1,33 +1,46 @@
 /* ✦ ROOT VARIABLES ✦ */
 :root {
-  /* Muted, professional palette — soft plum/mauve accents on warm neutrals.
-     Variable names are kept so the whole page restyles cleanly. */
-  --pink-light: #f3eef1;
-  --pink-soft: #e4d7de;
-  --pink-mid: #c3a9b6;
-  --pink-deep: #8c5a74;
-  --pink-rose: #7a4a63;
-  --lavender: #b7a7cc;
-  --lavender-deep: #7d6a99;
-  --blush: #efe8ec;
-  --cream: #fbf8f6;
-  --cream-dark: #f1ebe6;
-  --gold: #b89a6a;
-  --gold-light: #d9c7a1;
-  --gold-bright: #cdb582;
-  --text-dark: #2b2430;
-  --text-mid: #463c47;
-  --text-light: #6a5c66;
+  /* ✦ GIRLY CODER AESTHETIC — pink & violet on a dreamy dark purple-navy.
+     "Software girl / girls who code" vibe. Variable names kept so the
+     existing component rules restyle cleanly. ✦ */
+
+  /* Dark base layers (backgrounds / surfaces) */
+  --bg-deep: #140b1f;      /* page base, deep purple-navy */
+  --bg-mid: #1e1230;       /* mid layer */
+  --surface: #241733;      /* card surface */
+  --surface-soft: #2d1d40; /* raised surface */
+
+  /* Pink + violet accents (the stars of the show) */
+  --pink-light: #ffd6ea;   /* light pink text/accents on dark */
+  --pink-soft: #ff9ecb;    /* soft hot pink */
+  --pink-mid: #ff6fb0;     /* vivid pink */
+  --pink-deep: #ff5ba6;    /* hot pink accent */
+  --pink-rose: #e23e86;    /* deep rose */
+  --lavender: #c9a7ff;     /* light violet */
+  --lavender-deep: #9b6bff;/* vivid violet */
+  --blush: #3a2347;        /* dark blush surface */
+  --cream: #241733;        /* (reused as a dark surface) */
+  --cream-dark: #1e1230;
+  --gold: #ffd6a0;         /* warm accent (sparkle glow) */
+  --gold-light: #ffe8c7;
+  --gold-bright: #ffd98a;
+
+  /* Text on the dark theme */
+  --text-dark: #f4ebfa;    /* primary text (light) */
+  --text-mid: #d8c7e8;     /* secondary text */
+  --text-light: #a992c4;   /* muted text */
+
   --white: #ffffff;
-  --glass: rgba(255, 255, 255, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass: rgba(45, 29, 64, 0.55);
+  --glass-border: rgba(255, 111, 176, 0.25);
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Jost', sans-serif;
   --font-script: 'Great Vibes', cursive;
-  --shadow-soft: 0 4px 30px rgba(155, 111, 201, 0.15);
-  --shadow-card: 0 8px 50px rgba(201, 107, 138, 0.22);
-  --shadow-glow: 0 0 40px rgba(240, 217, 138, 0.4);
-  --border-pink: 1px solid rgba(232, 160, 184, 0.35);
+  --font-mono: 'Space Mono', 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace;
+  --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 10px 50px rgba(0, 0, 0, 0.45), 0 0 30px rgba(255, 91, 166, 0.1);
+  --shadow-glow: 0 0 40px rgba(255, 111, 176, 0.4);
+  --border-pink: 1px solid rgba(255, 111, 176, 0.3);
   --radius: 24px;
   --radius-sm: 14px;
 }
@@ -39,7 +52,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans);
-  background-color: #f1f0f2;
+  background-color: var(--bg-deep);
   color: var(--text-dark);
   overflow-x: hidden;
   line-height: 1.7;
@@ -57,27 +70,30 @@ body {
   pointer-events: none;
 }
 
-/* ✦ CLEAN PROFESSIONAL BACKDROP — calm, neutral light-grey wash ✦ */
+/* ✦ DREAMY DARK CODER BACKDROP — deep purple-navy with pink/violet glow ✦ */
 .dream-image {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #fafafa 0%, #f4f3f4 55%, #eeedef 100%);
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(155, 107, 255, 0.22), transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(255, 91, 166, 0.2), transparent 55%),
+    linear-gradient(160deg, #1a0f29 0%, #140b1f 50%, #0f0818 100%);
 }
 
-/* barely-there neutral overlay for subtle depth */
+/* soft glow pools for depth */
 .dream-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 25% 12%, rgba(230, 228, 232, 0.5), transparent 55%),
-    radial-gradient(circle at 82% 88%, rgba(224, 222, 228, 0.45), transparent 55%);
+    radial-gradient(circle at 30% 25%, rgba(255, 111, 176, 0.12), transparent 45%),
+    radial-gradient(circle at 75% 70%, rgba(155, 107, 255, 0.14), transparent 45%);
 }
 
 .dream-gradient {
   position: absolute;
   inset: -20%;
   z-index: -1;
-  background: linear-gradient(135deg, #f7f6f7 0%, #f1f0f2 50%, #ebeaed 100%);
+  background: linear-gradient(135deg, #1a0f29 0%, #140b1f 50%, #0f0818 100%);
 }
 
 /* Very soft, muted ambient orbs — subtle depth, not childish color */
@@ -585,10 +601,12 @@ section {
   line-height: 1.05;
   margin-bottom: 24px;
   letter-spacing: -0.01em;
-  background: linear-gradient(120deg, #3a2f3f 0%, #5a3f52 55%, #4a3a5c 100%);
+  background: linear-gradient(120deg, #ff8ec4 0%, #ff5ba6 45%, #c9a7ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: #ff8ec4; /* fallback if clip unsupported */
+  filter: drop-shadow(0 2px 24px rgba(255, 91, 166, 0.35));
 }
 .hero-name em {
   font-style: italic;
@@ -1698,3 +1716,157 @@ button:focus-visible,
 @media (prefers-reduced-motion: reduce) {
   .is-pressed { transform: none !important; }
 }
+
+/* ✦═══════════════════════════════════════════════════════════════✦
+   GIRLY CODER DARK THEME — overrides for a pink/violet "software girl"
+   aesthetic on a dreamy dark purple-navy base.
+   ✦═══════════════════════════════════════════════════════════════✦ */
+
+/* ─── Section band backgrounds (were near-white) ─── */
+.about,
+.projects {
+  background: rgba(30, 18, 48, 0.5) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* ─── Surfaces: dark glass cards with soft pink borders ─── */
+.about-card,
+.timeline-card,
+.project-card,
+.skill-category,
+.contact-card,
+.edu-card {
+  background: rgba(45, 29, 64, 0.72) !important;
+  border: 1px solid rgba(255, 111, 176, 0.22) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+}
+.about-card:hover,
+.project-card:hover,
+.skill-category:hover,
+.contact-card:hover,
+.edu-card:hover {
+  border-color: rgba(255, 111, 176, 0.5) !important;
+  box-shadow: var(--shadow-card), 0 0 32px rgba(255, 91, 166, 0.22) !important;
+}
+
+/* Stat cards */
+.stat-card {
+  background: rgba(45, 29, 64, 0.72);
+  border: 1px solid rgba(201, 167, 255, 0.25);
+}
+.stat-number {
+  background: linear-gradient(120deg, #ff8ec4, #c9a7ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Navbar: translucent dark with pink underglow ─── */
+.navbar {
+  background: rgba(20, 11, 31, 0.6) !important;
+  border-bottom: 1px solid rgba(255, 111, 176, 0.18);
+}
+.nav-links a { color: var(--text-mid); }
+.nav-links a:hover { color: var(--pink-soft); }
+.nav-logo { color: var(--pink-soft); }
+
+/* ─── Section titles glow pink/violet ─── */
+.section-title {
+  background: linear-gradient(120deg, #ff8ec4 0%, #ff5ba6 50%, #c9a7ff 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #ff8ec4;
+  filter: drop-shadow(0 2px 20px rgba(255, 91, 166, 0.25));
+}
+.hero-greeting,
+.section-tag { color: var(--pink-soft) !important; }
+
+/* ─── Badges & pills ─── */
+.badge {
+  background: rgba(255, 111, 176, 0.12) !important;
+  border: 1px solid rgba(255, 111, 176, 0.35) !important;
+  color: var(--pink-light) !important;
+}
+.skill-pills span,
+.project-tech span,
+.tl-tags span {
+  background: rgba(155, 107, 255, 0.14);
+  border: 1px solid rgba(201, 167, 255, 0.3);
+  color: var(--lavender);
+}
+
+/* ─── Filter buttons ─── */
+.filter-btn {
+  background: rgba(45, 29, 64, 0.7) !important;
+  border: 1.5px solid rgba(255, 111, 176, 0.3) !important;
+  color: var(--text-mid) !important;
+}
+.filter-btn:hover { background: rgba(255, 111, 176, 0.14) !important; }
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--pink-deep), var(--lavender-deep)) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+/* ─── Secondary / outline buttons on dark ─── */
+.btn-secondary {
+  background: rgba(45, 29, 64, 0.55) !important;
+  color: var(--pink-soft) !important;
+  border: 1.5px solid var(--pink-deep) !important;
+}
+.btn-secondary:hover { background: rgba(255, 111, 176, 0.14) !important; }
+.project-cta-alt {
+  background: rgba(45, 29, 64, 0.7) !important;
+  color: var(--pink-soft) !important;
+  border: 1.5px solid var(--pink-deep) !important;
+}
+
+/* ─── Flyer pink pills pop on dark ─── */
+.flyer-btn {
+  box-shadow: 0 4px 16px rgba(255, 91, 166, 0.3) !important;
+}
+
+/* ─── Dividers, rules, misc text ─── */
+.title-rule,
+.hero-divider::before,
+.hero-divider::after {
+  background: linear-gradient(to right, transparent, var(--pink-deep)) !important;
+}
+.about-text strong,
+.project-desc strong { color: var(--pink-soft); }
+.footer { color: var(--text-light); }
+.hero-social a { color: var(--pink-mid) !important; }
+.hero-social a:hover { color: var(--pink-soft) !important; }
+
+/* ─── Code accent chips (girly-coder touch) ─── */
+.code-accent {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--lavender);
+  background: rgba(155, 107, 255, 0.12);
+  border: 1px solid rgba(201, 167, 255, 0.28);
+  border-radius: 8px;
+  padding: 3px 10px;
+  letter-spacing: 0.02em;
+}
+.hero-code-line {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--lavender);
+  margin-top: 14px;
+  opacity: 0.9;
+}
+.hero-code-line .tag { color: var(--pink-soft); }
+.hero-code-line .cursor {
+  display: inline-block;
+  width: 9px; height: 1.05em;
+  background: var(--pink-mid);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blinkCaret 1.1s step-end infinite;
+}
+@keyframes blinkCaret { 50% { opacity: 0; } }

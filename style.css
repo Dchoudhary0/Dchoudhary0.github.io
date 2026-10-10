@@ -2018,9 +2018,9 @@ button:focus-visible,
 /* ─── Workshop marketing: pinned mini-poster wall ─── */
 .poster-wall {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-  justify-items: center;
+  align-items: start;
 }
 .poster {
   position: relative;
@@ -2065,11 +2065,11 @@ button:focus-visible,
   letter-spacing: 0.04em;
   color: var(--pink-light);
 }
-/* When an odd number of posters leaves the last one alone,
-   center it across both columns at normal size (no stretching) */
+/* A lone 5th poster stays in its own single column at normal size —
+   it simply sits on a new row, same width as every other poster.
+   (No full-width spanning, so it never balloons.) */
 .poster:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  max-width: calc(50% - 10px);
+  grid-column: auto;
 }
 
 /* ─── Tectoro: interface preview mockup ─── */

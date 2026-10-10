@@ -394,3 +394,41 @@ if (navToggle && navLinks) {
     if (e.key === 'Escape') closeMenu();
   });
 }
+
+/* ══════════════════════════════════════════════════════════════
+   13. BUTTON CLICK RIPPLE + PRESS EFFECT
+   A circle radiates from the exact click point on any button,
+   with a quick tactile press-down for satisfying feedback.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  // Any clickable "button-like" element on the page
+  const RIPPLE_SELECTOR =
+    '.btn-primary, .btn-secondary, .project-cta, .filter-btn, .contact-card, .project-link';
+
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest(RIPPLE_SELECTOR);
+    if (!target) return;
+
+    // Quick press-down feedback
+    target.classList.add('is-pressed');
+    setTimeout(() => target.classList.remove('is-pressed'), 110);
+
+    if (prefersReducedMotion) return;
+
+    // Build the ripple at the click point
+    const rect = target.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const ripple = document.createElement('span');
+    ripple.className = 'click-ripple';
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+    target.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+})();

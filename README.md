@@ -1,6 +1,6 @@
 # ✦ Dilpreet Choudhary — Portfolio
 
-A dreamy, coquette-aesthetic personal portfolio website.
+A clean, professional personal portfolio website with a refined muted-plum palette.
 
 ## 🎀 How to get a live link (free, takes 2 minutes)
 
@@ -27,9 +27,10 @@ Place your headshot as `assets/dilpreet.jpg` in the assets folder.
 ## 🎮 Project link
 Dream Collision is already linked to: https://dream-collision.onrender.com
 
-## 🎨 Colors
-- Blush pink: `#fce8ef`
-- Rose: `#d4547a`  
-- Deep pink: `#c96b8a`
-- Gold: `#c9a96e`
-- Cream: `#fdf8f5`
+## 🎨 Colors (professional muted palette)
+- Soft neutral: `#f3eef1`
+- Mauve: `#c3a9b6`
+- Plum accent: `#8c5a74`
+- Muted lavender: `#7d6a99`
+- Warm gold: `#b89a6a`
+- Cream: `#fbf8f6`

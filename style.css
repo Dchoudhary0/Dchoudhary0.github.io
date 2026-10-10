@@ -39,7 +39,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans);
-  background-color: #efeaed;
+  background-color: #f1f0f2;
   color: var(--text-dark);
   overflow-x: hidden;
   line-height: 1.7;
@@ -57,27 +57,27 @@ body {
   pointer-events: none;
 }
 
-/* ✦ CLEAN PROFESSIONAL BACKDROP — no busy image, just a calm wash ✦ */
+/* ✦ CLEAN PROFESSIONAL BACKDROP — calm, neutral light-grey wash ✦ */
 .dream-image {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #faf7f9 0%, #f2edf1 55%, #ece7ec 100%);
+  background: linear-gradient(180deg, #fafafa 0%, #f4f3f4 55%, #eeedef 100%);
 }
 
-/* subtle neutral overlay so content stays readable */
+/* barely-there neutral overlay for subtle depth */
 .dream-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 25% 15%, rgba(224, 214, 226, 0.4), transparent 55%),
-    radial-gradient(circle at 80% 85%, rgba(206, 196, 216, 0.35), transparent 55%);
+    radial-gradient(circle at 25% 12%, rgba(230, 228, 232, 0.5), transparent 55%),
+    radial-gradient(circle at 82% 88%, rgba(224, 222, 228, 0.45), transparent 55%);
 }
 
 .dream-gradient {
   position: absolute;
   inset: -20%;
   z-index: -1;
-  background: linear-gradient(135deg, #f6f2f5 0%, #efe9ee 50%, #e9e3e8 100%);
+  background: linear-gradient(135deg, #f7f6f7 0%, #f1f0f2 50%, #ebeaed 100%);
 }
 
 /* Very soft, muted ambient orbs — subtle depth, not childish color */
@@ -655,8 +655,8 @@ section {
 .btn-primary {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #8c5a74, var(--pink-rose), #7d6a99);
-  background-size: 200% auto;
+  background: linear-gradient(120deg, #d4547a, #b32d5e 45%, #a85c7c 70%, #c98aa6);
+  background-size: 220% auto;
   color: var(--white);
   padding: 17px 42px;
   border-radius: 50px;
@@ -666,6 +666,11 @@ section {
   letter-spacing: 0.08em;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s, background-position 0.5s;
   box-shadow: 0 8px 25px rgba(179, 45, 94, 0.4);
+  animation: btnShift 5s ease infinite;
+}
+@keyframes btnShift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
 }
 .btn-primary::after {
   content: '';
@@ -675,6 +680,13 @@ section {
   background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
   transform: skewX(-20deg);
   transition: left 0.6s ease;
+  animation: btnSheen 4.5s ease-in-out infinite;
+}
+/* a sheen that sweeps across the button on its own, so it feels alive */
+@keyframes btnSheen {
+  0%   { left: -120%; }
+  22%  { left: 130%; }
+  100% { left: 130%; }
 }
 .btn-primary:hover {
   transform: translateY(-4px) scale(1.05);
@@ -689,15 +701,21 @@ section {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(6px);
-  color: var(--pink-deep);
+  color: #b32d5e;
   padding: 17px 42px;
   border-radius: 50px;
-  border: 1.5px solid var(--pink-mid);
+  border: 1.5px solid #d4547a;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s, background 0.3s, border-color 0.3s;
+  animation: btnGlowPulse 3.5s ease-in-out infinite;
+}
+/* soft breathing glow so the outlined buttons feel alive */
+@keyframes btnGlowPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(212, 84, 122, 0); }
+  50%      { box-shadow: 0 0 18px rgba(212, 84, 122, 0.3); }
 }
 .btn-secondary::after {
   content: '';
@@ -1163,60 +1181,42 @@ section {
   line-height: 1.65;
   margin: 2px 0 18px;
 }
+/* Small pink pill buttons — compact, wrap in a row */
 .flyer-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .flyer-btn {
   position: relative;
   overflow: hidden;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 13px 16px;
-  border-radius: 14px;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 50px;
   text-decoration: none;
-  background: rgba(255, 252, 254, 0.85);
-  border: 1px solid rgba(140, 90, 116, 0.22);
-  box-shadow: var(--shadow-soft);
-  color: var(--text-dark);
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
-}
-.flyer-btn-icon {
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-.flyer-btn-label {
   font-family: var(--font-sans);
+  font-size: 0.82rem;
   font-weight: 600;
-  font-size: 0.92rem;
   letter-spacing: 0.01em;
-  flex: 1;
-}
-.flyer-btn-view {
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--pink-deep);
-  font-weight: 600;
-  white-space: nowrap;
-  opacity: 0.85;
-  transition: opacity 0.3s, transform 0.3s;
+  color: var(--white);
+  background: linear-gradient(135deg, #c98aa6, #a85c7c);
+  border: 1px solid rgba(168, 92, 124, 0.4);
+  box-shadow: 0 4px 14px rgba(168, 92, 124, 0.28);
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
 }
 .flyer-btn:hover {
-  transform: translateY(-3px);
-  border-color: var(--pink-deep);
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: var(--shadow-card), 0 0 22px rgba(205, 181, 130, 0.25);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #b8769a, #8c4a68);
+  box-shadow: 0 7px 20px rgba(168, 92, 124, 0.4);
 }
-.flyer-btn:hover .flyer-btn-view {
-  opacity: 1;
-  transform: translateX(2px);
+.flyer-btn:active {
+  transform: translateY(0);
 }
-/* Phones: stack buttons in a single column */
+/* Phones: let buttons wrap naturally */
 @media (max-width: 600px) {
-  .flyer-buttons { grid-template-columns: 1fr; }
+  .flyer-btn { font-size: 0.78rem; padding: 7px 14px; }
 }
 
 /* ✦ SKILLS ✦ */
@@ -1624,12 +1624,14 @@ button:focus-visible,
   font-size: 0.9rem;
 }
 .hero-social a {
-  color: var(--text-mid);
+  color: #b32d5e;
   text-decoration: none;
   letter-spacing: 0.04em;
-  transition: color 0.3s;
+  font-weight: 600;
+  transition: color 0.3s, transform 0.3s;
+  display: inline-block;
 }
-.hero-social a:hover { color: var(--pink-deep); }
+.hero-social a:hover { color: #d4547a; transform: translateY(-2px); }
 .hero-social-sep { color: var(--pink-mid); }
 
 /* Secondary contact card (Handshake) — slightly understated */

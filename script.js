@@ -64,7 +64,10 @@ document.addEventListener('click', (e) => {
    2. FALLING PETALS CANVAS ANIMATION
    ══════════════════════════════════════════════════════════════ */
 const canvas = document.getElementById('petalsCanvas');
-const ctx = canvas.getContext('2d');
+// Background particles are disabled for a clean, professional look.
+// Bail out early if the canvas is missing or hidden so nothing draws.
+const PARTICLES_ENABLED = !!(canvas && !canvas.hidden);
+const ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
 let petals = [];
 
 function resizeCanvas() {
@@ -161,7 +164,7 @@ const petalCount = isMobile ? 8 : 16;
 const glowCount = isMobile ? 12 : 26;
 const glows = [];
 
-if (!prefersReducedMotion) {
+if (PARTICLES_ENABLED && !prefersReducedMotion) {
   for (let i = 0; i < petalCount; i++) petals.push(new Petal());
   for (let i = 0; i < glowCount; i++) glows.push(new Glow());
 
@@ -173,7 +176,7 @@ if (!prefersReducedMotion) {
   }
   animatePetals();
 } else if (canvas) {
-  // Respect reduced-motion: no drifting particles at all
+  // Particles disabled (clean professional background) — hide the canvas
   canvas.style.display = 'none';
 }
 
@@ -375,21 +378,21 @@ sparkleTargets.forEach((el) => {
    12. MOBILE NAV TOGGLE (hamburger menu)
    ══════════════════════════════════════════════════════════════ */
 const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
+const navMenu = document.getElementById('navLinks');
 
-if (navToggle && navLinks) {
+if (navToggle && navMenu) {
   const closeMenu = () => {
-    navLinks.classList.remove('open');
+    navMenu.classList.remove('open');
     navToggle.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
   };
   navToggle.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
+    const isOpen = navMenu.classList.toggle('open');
     navToggle.classList.toggle('open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
   });
   // Close the menu after tapping a link
-  navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+  navMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
   // Close on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();

@@ -2044,6 +2044,9 @@ button:focus-visible,
 }
 .poster img {
   width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
   border-radius: 6px;
   display: block;
 }

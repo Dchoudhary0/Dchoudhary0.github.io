@@ -77,9 +77,9 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-// Muted, professional ambient particle tones (soft neutrals, no bright pink)
-const petalColors = ['#e4d7de', '#c3a9b6', '#d9c7a1', '#b7a7cc', '#efe8ec', '#cdbcc8'];
-const glowColors = ['#d9c7a1', '#efe8ec', '#c3a9b6', '#b7a7cc'];
+// Girly-coder sparkle tones — soft pink & violet glow on the dark backdrop
+const petalColors = ['#ff9ecb', '#ff6fb0', '#c9a7ff', '#9b6bff', '#ffd6ea', '#ffb3dd'];
+const glowColors = ['#ff6fb0', '#c9a7ff', '#ff9ecb', '#9b6bff', '#ffd6a0'];
 
 // Drifting petals
 class Petal {

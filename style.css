@@ -35,6 +35,7 @@
 
 html { scroll-behavior: smooth; }
 
+html, body { max-width: 100%; overflow-x: hidden; }
 body {
   font-family: var(--font-sans);
   background-color: #f3e3ef;
@@ -42,6 +43,7 @@ body {
   overflow-x: hidden;
   line-height: 1.7;
 }
+img { max-width: 100%; }
 /* Keep the normal system cursor usable; the decorative dot/ring just adds flair. */
 
 /* ✦═══════════════════════════════════════════════════════✦
@@ -540,11 +542,11 @@ section {
 .hero-photo-wrapper::before {
   content: '';
   position: absolute;
-  inset: -18px;
-  border-radius: 60% 60% 50% 50% / 50% 50% 60% 60%;
+  inset: -16px;
+  border-radius: 32px;
   background: conic-gradient(from 0deg, #f0d98a, #d4547a, #c9a3e8, #f8d0de, #f0d98a);
-  filter: blur(14px);
-  opacity: 0.75;
+  filter: blur(16px);
+  opacity: 0.7;
   z-index: -1;
   animation: haloSpin 8s linear infinite;
 }
@@ -553,21 +555,21 @@ section {
 }
 
 .hero-photo {
-  width: 320px;
-  height: 400px;
+  width: 380px;
+  height: 460px;
   object-fit: cover;
-  object-position: top;
-  border-radius: 60% 60% 50% 50% / 50% 50% 60% 60%;
+  object-position: center top;
+  border-radius: 28px;
   border: 5px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 20px 60px rgba(155, 111, 201, 0.35), 0 0 0 10px rgba(255, 250, 253, 0.55), var(--shadow-glow);
 }
 
 .hero-photo-placeholder {
   display: none;
-  width: 320px;
-  height: 400px;
+  width: 380px;
+  height: 460px;
   background: linear-gradient(135deg, var(--pink-soft), var(--pink-mid));
-  border-radius: 60% 60% 50% 50% / 50% 50% 60% 60%;
+  border-radius: 28px;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
@@ -1495,7 +1497,6 @@ section {
 /* ✦ RESPONSIVE ✦ */
 @media (max-width: 900px) {
   .navbar { padding: 16px 24px; }
-  .nav-links { gap: 20px; }
 
   .hero { padding: 100px 24px 80px; }
   .hero-content {
@@ -1504,6 +1505,7 @@ section {
     gap: 40px;
   }
   .hero-name { font-size: 3rem; }
+  .hero-photo, .hero-photo-placeholder { width: 340px; height: 410px; }
   .hero-badges { justify-content: center; }
   .hero-cta { justify-content: center; }
   .hero-divider { justify-content: center; }
@@ -1613,24 +1615,28 @@ button:focus-visible,
 }
 
 /* ✦ MOBILE NAV MENU ✦ */
-@media (max-width: 760px) {
-  .nav-toggle { display: flex; }
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; z-index: 120; }
   .nav-links {
     position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
-    width: min(75vw, 300px);
+    height: 100dvh;
+    width: min(78vw, 300px);
+    max-width: 100%;
     flex-direction: column;
     justify-content: center;
     gap: 28px;
     padding: 40px;
-    background: rgba(255, 250, 253, 0.97);
+    margin: 0;
+    background: rgba(255, 250, 253, 0.98);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     box-shadow: -8px 0 40px rgba(155, 111, 201, 0.18);
-    transform: translateX(100%);
+    transform: translateX(110%);
     transition: transform 0.35s ease;
+    z-index: 110;
   }
   .nav-links.open { transform: translateX(0); }
   .nav-links a { font-size: 1.05rem; }
@@ -1639,6 +1645,11 @@ button:focus-visible,
 /* ✦ SMALL-SCREEN READABILITY — no tiny text, no horizontal scroll ✦ */
 @media (max-width: 480px) {
   html { font-size: 15px; }
+  .hero-photo, .hero-photo-placeholder {
+    width: min(78vw, 300px);
+    height: auto;
+    aspect-ratio: 380 / 460;
+  }
   .hero-name { font-size: 2.4rem; }
   .hero-title { font-size: 1.1rem; }
   .section-title { font-size: 2rem; }
@@ -1649,4 +1660,20 @@ button:focus-visible,
     text-align: center;
   }
   .hero-cta { flex-direction: column; width: 100%; }
+  .hero-social { justify-content: center; flex-wrap: wrap; }
+  .hero-badges { flex-wrap: wrap; }
+
+  /* Keep decorations from causing horizontal scroll on phones */
+  .castle, .cloud, .hero-ribbon, .aura { display: none; }
+
+  section { padding: 56px 20px; }
+  .project-info { padding: 24px; }
+  .flyer-caption { font-size: 0.9rem; }
+  .nav-logo { font-size: 1.4rem; }
+}
+
+/* Also tame big decorations on small tablets / large phones */
+@media (max-width: 760px) {
+  .hero-ribbon { display: none; }
+  .castle-left, .castle-right { opacity: 0.12; }
 }

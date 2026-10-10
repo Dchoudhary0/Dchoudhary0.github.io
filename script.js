@@ -461,3 +461,30 @@ if (navToggle && navMenu) {
     }
   });
 })();
+
+/* ══════════════════════════════════════════════════════════════
+   14. CREATIVE DESK — reveal visuals on scroll
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if (!revealEls.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealEls.forEach((el) => el.classList.add('revealed'));
+    return;
+  }
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  revealEls.forEach((el) => revealObserver.observe(el));
+})();

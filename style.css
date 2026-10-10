@@ -37,6 +37,7 @@
   --font-sans: 'Jost', sans-serif;
   --font-script: 'Great Vibes', cursive;
   --font-mono: 'Space Mono', 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace;
+  --font-hand: 'Caveat', 'Segoe Script', cursive;
   --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.35);
   --shadow-card: 0 10px 50px rgba(0, 0, 0, 0.45), 0 0 30px rgba(255, 91, 166, 0.1);
   --shadow-glow: 0 0 40px rgba(255, 111, 176, 0.4);
@@ -1876,3 +1877,248 @@ button:focus-visible,
   animation: blinkCaret 1.1s step-end infinite;
 }
 @keyframes blinkCaret { 50% { opacity: 0; } }
+
+/* ✦═══════════════════════════════════════════════════════════════✦
+   THE CREATIVE DESK — "inside Dilpreet's creative mind"
+   Each project gets its own visual identity + handwritten annotations.
+   ✦═══════════════════════════════════════════════════════════════✦ */
+.desk-intro {
+  max-width: 640px;
+  margin: 18px auto 0;
+  color: var(--text-mid);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.desk {
+  max-width: 1100px;
+  margin: 60px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 0 24px;
+}
+
+/* Each desk item: visual on one side, text on the other */
+.desk-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: center;
+  background: rgba(45, 29, 64, 0.6);
+  border: 1px solid rgba(255, 111, 176, 0.2);
+  border-radius: var(--radius);
+  padding: 40px;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.desk-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 111, 176, 0.45);
+  box-shadow: var(--shadow-card), 0 0 36px rgba(255, 91, 166, 0.22);
+}
+/* Alternate: text-first items put the visual on the right */
+.desk-posters { grid-template-columns: 1fr 1fr; }
+.desk-note { grid-template-columns: 1fr; }
+
+.desk-text .project-title {
+  margin: 6px 0 12px;
+}
+
+/* Reveal-on-scroll */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Handwritten annotations in Dilpreet's voice ─── */
+.annotation {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  line-height: 1.45;
+  color: var(--pink-soft);
+  margin: 14px 0;
+  padding-left: 30px;
+  position: relative;
+}
+.annotation::before {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  font-size: 1.2rem;
+}
+.annotation-idea::before { content: '💡'; }
+.annotation-tries::before { content: '🔁'; }
+.annotation-fix::before   { content: '🐛'; }
+.annotation em { color: var(--lavender); font-style: italic; }
+
+/* ─── Dream Collision: dreamy portal ─── */
+.portal {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+.portal .desk-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+.portal::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 55%, transparent 35%, rgba(20, 11, 31, 0.7) 100%);
+  pointer-events: none;
+}
+.portal-ring {
+  position: absolute;
+  inset: 12px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 158, 203, 0.5);
+  box-shadow: 0 0 40px rgba(255, 91, 166, 0.4) inset, 0 0 30px rgba(201, 167, 255, 0.3);
+  pointer-events: none;
+  z-index: 2;
+  animation: portalPulse 4s ease-in-out infinite;
+}
+@keyframes portalPulse {
+  0%, 100% { box-shadow: 0 0 40px rgba(255, 91, 166, 0.35) inset, 0 0 24px rgba(201, 167, 255, 0.25); }
+  50%      { box-shadow: 0 0 60px rgba(255, 91, 166, 0.5) inset, 0 0 40px rgba(201, 167, 255, 0.4); }
+}
+.portal-cta {
+  position: absolute;
+  left: 50%; bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 3;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--pink-deep), var(--lavender-deep));
+  padding: 11px 22px;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(255, 91, 166, 0.45);
+  opacity: 0.95;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.portal:hover .desk-img { transform: scale(1.06); filter: saturate(1.1); }
+.portal:hover .portal-cta { transform: translateX(-50%) translateY(-3px); box-shadow: 0 10px 28px rgba(255, 91, 166, 0.6); }
+
+/* ─── Workshop marketing: pinned mini-poster wall ─── */
+.poster-wall {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.poster {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background: #1b1026;
+  border-radius: 10px;
+  padding: 8px 8px 30px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform: rotate(-2deg);
+}
+.poster:nth-child(2) { transform: rotate(1.5deg); }
+.poster:nth-child(3) { transform: rotate(2deg); }
+.poster:nth-child(4) { transform: rotate(-1.5deg); }
+.poster:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 14px 34px rgba(255, 91, 166, 0.35);
+  z-index: 4;
+}
+.poster img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+.poster-pin {
+  position: absolute;
+  top: -7px; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff9ecb, #e23e86);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  z-index: 5;
+}
+.poster-label {
+  position: absolute;
+  left: 0; right: 0; bottom: 8px;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--pink-light);
+}
+
+/* ─── Tectoro: interface preview mockup ─── */
+.ui-preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.ui-mock {
+  width: 100%;
+  background: #15101f;
+  border: 1px solid rgba(201, 167, 255, 0.25);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.5);
+}
+.ui-topbar {
+  display: flex; gap: 7px;
+  padding: 11px 14px;
+  background: #1e1630;
+  border-bottom: 1px solid rgba(201, 167, 255, 0.15);
+}
+.ui-dot { width: 10px; height: 10px; border-radius: 50%; background: #ff6fb0; opacity: 0.8; }
+.ui-dot:nth-child(2) { background: #c9a7ff; }
+.ui-dot:nth-child(3) { background: #ffd6a0; }
+.ui-body { display: flex; min-height: 190px; }
+.ui-sidebar {
+  width: 64px;
+  background: #1a1228;
+  padding: 16px 10px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.ui-nav { height: 10px; border-radius: 4px; background: rgba(201, 167, 255, 0.25); }
+.ui-nav.active { background: var(--pink-mid); }
+.ui-content { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.ui-row { height: 12px; border-radius: 5px; background: rgba(255,255,255,0.08); }
+.ui-row-head { width: 55%; height: 16px; background: rgba(255, 111, 176, 0.4); }
+.ui-row.short { width: 70%; }
+.ui-cards { display: flex; gap: 12px; }
+.ui-tile {
+  flex: 1; height: 54px; border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255,111,176,0.2), rgba(155,107,255,0.2));
+  border: 1px solid rgba(201, 167, 255, 0.2);
+}
+.ui-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--lavender);
+  letter-spacing: 0.03em;
+}
+
+/* ─── Responsive: stack on tablets/phones ─── */
+@media (max-width: 860px) {
+  .desk-item { grid-template-columns: 1fr; gap: 28px; padding: 28px; }
+  /* keep the visual above the text on stack */
+  .desk-posters .poster-wall { order: 2; }
+}
+@media (max-width: 480px) {
+  .poster-wall { grid-template-columns: 1fr; }
+  .annotation { font-size: 1.15rem; }
+}

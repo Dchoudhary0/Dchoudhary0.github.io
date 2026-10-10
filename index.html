@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=20261010-dark" />
 </head>
 <body>
@@ -157,120 +157,134 @@
     </div>
   </section>
 
-  <!-- ✦ PROJECTS SECTION ✦ -->
+  <!-- ✦ PROJECTS — "Inside Dilpreet's Creative Mind" (creative desk) ✦ -->
   <section class="projects" id="projects">
     <div class="section-header">
-      <span class="section-tag">✦ what i've built ✦</span>
-      <h2 class="section-title">Projects</h2>
+      <span class="section-tag">✦ inside my creative mind ✦</span>
+      <h2 class="section-title">The Creative Desk</h2>
       <div class="title-rule"></div>
+      <p class="desk-intro">A look at what I've made — the ideas, the mess, and the moments it finally clicked.
+        Each piece carries a little note from me on how it actually came together.</p>
     </div>
 
-    <div class="projects-grid">
+    <div class="desk">
 
-      <div class="project-card featured">
-        <div class="project-img-wrapper">
-          <img src="assets/dream-collision-gameplay.png" alt="Dream Collision gameplay — characters and dreamworlds" class="project-img" onerror="this.onerror=null; this.src='assets/dream-collision.svg';" />
-          <div class="project-overlay">
-            <a href="https://dream-collision.onrender.com" target="_blank" class="project-link">Play Now ✦</a>
-          </div>
+      <!-- ─── DREAM COLLISION · dreamy portal ─── -->
+      <article class="desk-item desk-dream">
+        <div class="desk-visual portal" data-reveal>
+          <img src="assets/dream-collision-gameplay.png" alt="Dream Collision gameplay — characters and dreamworlds" class="desk-img" onerror="this.onerror=null; this.src='assets/dream-collision.svg';" />
+          <span class="portal-ring" aria-hidden="true"></span>
+          <a href="https://dream-collision.onrender.com" target="_blank" rel="noopener" class="portal-cta">▶ Enter the Dream ↗</a>
         </div>
-        <div class="project-info">
-          <div class="project-tag">Featured Project ✦</div>
+        <div class="desk-text">
+          <div class="project-tag">Featured ✦ Browser Game</div>
           <h3 class="project-title">Dream Collision</h3>
           <p class="project-desc">
-            A browser-based escape game with 4 levels, 3 worlds, and 8 playable characters, deployed live on Render.
+            A browser-based escape game — 4 levels, 3 worlds, and 8 playable characters, deployed live on Render.
+            I led the creative vision and used AI prompt engineering to generate and refine all the artwork, then
+            built the front-end in HTML, CSS, and JavaScript.
           </p>
-          <p class="project-desc"><strong>My contribution:</strong> I led the creative vision — designing the game
-            concept, four levels, three worlds, and eight characters. I used <strong>AI prompt engineering</strong> to
-            generate and refine all the artwork and visual themes through iterative prompting, then built the front-end
-            UI and interactions in HTML, CSS, and JavaScript. I debugged gameplay logic and layout issues, and handled
-            deployment and cross-browser testing on Render.</p>
+          <p class="annotation annotation-idea">“My idea started here — I wanted a dreamy world you could actually walk through, not just look at.”</p>
+          <p class="annotation annotation-tries">“The artwork took <em>so</em> many prompt tries before the worlds felt cohesive.”</p>
           <div class="project-tech">
-            <span>AI Prompt Engineering</span><span>Generative AI</span><span>Creative Direction</span><span>Game Design</span><span>JavaScript</span><span>HTML/CSS</span><span>UI Design</span><span>Debugging</span><span>Render Deploy</span><span>Cross-Browser Testing</span>
+            <span>AI Prompt Engineering</span><span>Creative Direction</span><span>Game Design</span><span>JavaScript</span><span>HTML/CSS</span><span>UI Design</span><span>Render Deploy</span>
           </div>
           <div class="project-links">
-            <a href="https://dream-collision.onrender.com" target="_blank" class="project-cta">
-              ▶ Play Live ↗
-            </a>
-            <a href="https://github.com/Dchoudhary0/dream-collision" target="_blank" class="project-cta project-cta-alt">
-              ⌨ View Code ↗
-            </a>
+            <a href="https://dream-collision.onrender.com" target="_blank" rel="noopener" class="project-cta">▶ Play Live ↗</a>
+            <a href="https://github.com/Dchoudhary0/dream-collision" target="_blank" rel="noopener" class="project-cta project-cta-alt">⌨ View Code ↗</a>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
-        <div class="project-icon">📣</div>
-        <div class="project-info">
-          <div class="project-tag">AI Outreach &amp; Creative Communication</div>
-          <h3 class="project-title">AI Workshop Marketing &amp; Promotion</h3>
+      <!-- ─── WORKSHOP MARKETING · miniature poster gallery ─── -->
+      <article class="desk-item desk-posters">
+        <div class="desk-text">
+          <div class="project-tag">AI Outreach ✦ Visual Design</div>
+          <h3 class="project-title">AI+ Studio Poster Gallery</h3>
           <p class="project-desc">
-            Helped promote AI workshops at the University of Arizona Libraries AI+ Studio by creating
-            promotional visuals and student-focused messaging. Used generative AI and iterative prompting
-            to develop imagery and refine designs that made the workshops feel approachable, engaging,
-            and relevant to students.
+            Promotional flyers I conceived and designed to market AI workshops at the University of Arizona
+            Libraries AI+ Studio — developing the concepts, visuals, and student-focused messaging with
+            generative AI and iterative prompting.
           </p>
-          <div class="project-tech">
-            <span>Generative AI</span><span>Prompt Engineering</span><span>Visual Design</span><span>Workshop Promotion</span><span>Creative Communication</span><span>Student Outreach</span>
-          </div>
-
-          <!-- ✦ FLYER GALLERY — click-to-view buttons (clean, professional) ✦ -->
-          <p class="flyer-caption">
-            ✦ Promotional flyers I conceived and designed to market AI+ Studio workshops —
-            I developed the concepts, visuals, and student-focused messaging using generative AI
-            and iterative prompting. Click any flyer to view the full design.
-          </p>
-          <div class="flyer-buttons">
-            <a href="assets/flyer-ai-study-buddy.png" target="_blank" rel="noopener" class="flyer-btn">🖼️ AI Study Buddy</a>
-            <a href="assets/flyer-claude-workshop.png" target="_blank" rel="noopener" class="flyer-btn">🖼️ Claude Code Workshop</a>
-            <a href="assets/flyer-ai-music-challenge.png" target="_blank" rel="noopener" class="flyer-btn">🖼️ AI Music Challenge</a>
-            <a href="assets/flyer-exam-generator.png" target="_blank" rel="noopener" class="flyer-btn">🖼️ AI Practice Exam Generator</a>
-          </div>
-
-          <!-- ========================================================================= -->
-          <!-- 🔗 ADD YOUR PUBLIC EVENT LINK HERE (optional)                              -->
-          <!--                                                                            -->
-          <!-- When you have a public event / library page URL, delete this comment       -->
-          <!-- block and paste the links row below, replacing the href="" value:          -->
-          <!--                                                                            -->
-          <!-- <div class="project-links">                                               -->
-          <!--   <a href="PASTE-YOUR-EVENT-URL-HERE" target="_blank"                      -->
-          <!--      class="project-cta">✦ View Event ↗</a>                               -->
-          <!-- </div>                                                                     -->
-          <!-- ========================================================================= -->
+          <p class="annotation annotation-idea">“I wanted these to feel like something a student would actually stop and read — approachable, not corporate.”</p>
         </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-icon">🌳</div>
-        <div class="project-info">
-          <div class="project-tag">Leadership & Impact</div>
-          <h3 class="project-title">Project Save Trees</h3>
-          <p class="project-desc">
-            Founded and directed a community environmental initiative that organized tree-planting 
-            activities with local schools and volunteers, demonstrating leadership beyond the classroom.
-          </p>
-          <div class="project-tech">
-            <span>Community</span><span>Leadership</span><span>Environmental</span>
-          </div>
+        <!-- pinned mini-posters -->
+        <div class="poster-wall" data-reveal>
+          <a href="assets/flyer-ai-study-buddy.png" target="_blank" rel="noopener" class="poster">
+            <span class="poster-pin" aria-hidden="true"></span>
+            <img src="assets/flyer-ai-study-buddy.png" alt="AI Study Buddy flyer" loading="lazy" />
+            <span class="poster-label">AI Study Buddy</span>
+          </a>
+          <a href="assets/flyer-claude-workshop.png" target="_blank" rel="noopener" class="poster">
+            <span class="poster-pin" aria-hidden="true"></span>
+            <img src="assets/flyer-claude-workshop.png" alt="Claude Code Workshop flyer" loading="lazy" />
+            <span class="poster-label">Claude Code Workshop</span>
+          </a>
+          <a href="assets/flyer-ai-music-challenge.png" target="_blank" rel="noopener" class="poster">
+            <span class="poster-pin" aria-hidden="true"></span>
+            <img src="assets/flyer-ai-music-challenge.png" alt="AI Music Challenge flyer" loading="lazy" />
+            <span class="poster-label">AI Music Challenge</span>
+          </a>
+          <a href="assets/flyer-exam-generator.png" target="_blank" rel="noopener" class="poster">
+            <span class="poster-pin" aria-hidden="true"></span>
+            <img src="assets/flyer-exam-generator.png" alt="AI Practice Exam Generator flyer" loading="lazy" />
+            <span class="poster-label">AI Practice Exam Generator</span>
+          </a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
-        <div class="project-icon">🎨</div>
-        <div class="project-info">
-          <div class="project-tag">UI/UX Design</div>
-          <h3 class="project-title">Tectoro UI Redesign</h3>
+      <!-- ─── TECTORO · interface preview ─── -->
+      <article class="desk-item desk-ui">
+        <div class="desk-visual ui-preview" data-reveal>
+          <div class="ui-mock" aria-hidden="true">
+            <div class="ui-topbar">
+              <span class="ui-dot"></span><span class="ui-dot"></span><span class="ui-dot"></span>
+            </div>
+            <div class="ui-body">
+              <div class="ui-sidebar">
+                <span class="ui-nav active"></span><span class="ui-nav"></span><span class="ui-nav"></span><span class="ui-nav"></span>
+              </div>
+              <div class="ui-content">
+                <div class="ui-row ui-row-head"></div>
+                <div class="ui-cards">
+                  <div class="ui-tile"></div><div class="ui-tile"></div><div class="ui-tile"></div>
+                </div>
+                <div class="ui-row"></div><div class="ui-row short"></div>
+              </div>
+            </div>
+          </div>
+          <span class="ui-tag">Figma → React / TSX</span>
+        </div>
+        <div class="desk-text">
+          <div class="project-tag">UI / UX Design</div>
+          <h3 class="project-title">Tectoro Interface Redesign</h3>
           <p class="project-desc">
             As a UI Intern at Tectoro (Bengaluru, India), I designed wireframes and interface layouts in Figma,
-            then implemented interface changes in React and TSX. I collaborated with the UX team on user flows
-            and layout improvements to make the product cleaner and easier to navigate.
+            then shipped the changes in React and TSX — collaborating with the UX team on user flows to make the
+            product cleaner and easier to navigate.
           </p>
+          <p class="annotation annotation-fix">“The bug I finally fixed: a layout that kept breaking on smaller screens — getting the flow right felt so good.”</p>
           <div class="project-tech">
             <span>Figma</span><span>React</span><span>TSX</span><span>Wireframing</span><span>UX Collaboration</span>
           </div>
         </div>
-      </div>
+      </article>
+
+      <!-- ─── PROJECT SAVE TREES · note card ─── -->
+      <article class="desk-item desk-note">
+        <div class="desk-text">
+          <div class="project-tag">🌳 Leadership &amp; Impact</div>
+          <h3 class="project-title">Project Save Trees</h3>
+          <p class="project-desc">
+            I founded and directed a community environmental initiative, organizing tree-planting activities
+            with local schools and volunteers.
+          </p>
+          <p class="annotation annotation-idea">“Not everything I'm proud of is on a screen — this one grew in real soil.”</p>
+          <div class="project-tech">
+            <span>Community</span><span>Leadership</span><span>Environmental</span>
+          </div>
+        </div>
+      </article>
 
     </div>
   </section>

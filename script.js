@@ -500,7 +500,7 @@ if (navToggle && navMenu) {
   const line = target.closest('.hero-code-line');
   const fullText = target.getAttribute('data-text') || target.textContent || '';
 
-  // Respect reduced motion: just show the finished text
+  // Respect reduced motion: just show the finished text, no looping
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     target.textContent = fullText;
     return;
@@ -508,23 +508,46 @@ if (navToggle && navMenu) {
 
   target.textContent = '';
 
-  let i = 0;
-  const typeSpeed = 55;   // ms per character
-  const startDelay = 900; // small pause after the page settles
+  const typeSpeed = 60;    // ms per character while typing
+  const deleteSpeed = 35;  // ms per character while deleting (a bit faster)
+  const holdFull = 1800;   // pause once fully typed
+  const holdEmpty = 500;   // pause once fully deleted, before retyping
+  const startDelay = 900;  // settle before the first type
 
-  function typeNext() {
-    if (i <= fullText.length) {
+  let i = 0;
+  let deleting = false;
+
+  function tick() {
+    // caret stays solid while actively typing/deleting
+    if (line) line.classList.add('typing');
+
+    if (!deleting) {
+      // typing forward
       target.textContent = fullText.slice(0, i);
       i += 1;
-      setTimeout(typeNext, typeSpeed + (Math.random() * 40 - 20)); // slight human jitter
+      if (i > fullText.length) {
+        // fully typed — hold, let caret blink, then start deleting
+        if (line) line.classList.remove('typing');
+        deleting = true;
+        setTimeout(tick, holdFull);
+        return;
+      }
+      setTimeout(tick, typeSpeed + (Math.random() * 40 - 20)); // human jitter
     } else {
-      // done typing — let the caret resume blinking
-      if (line) line.classList.remove('typing');
+      // deleting backward
+      i -= 1;
+      target.textContent = fullText.slice(0, Math.max(i, 0));
+      if (i <= 0) {
+        // fully deleted — brief pause, then type again (loop)
+        i = 0;
+        deleting = false;
+        if (line) line.classList.remove('typing');
+        setTimeout(tick, holdEmpty);
+        return;
+      }
+      setTimeout(tick, deleteSpeed);
     }
   }
 
-  setTimeout(() => {
-    if (line) line.classList.add('typing');
-    typeNext();
-  }, startDelay);
+  setTimeout(tick, startDelay);
 })();

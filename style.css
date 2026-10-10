@@ -1868,6 +1868,7 @@ button:focus-visible,
   opacity: 0.9;
 }
 .hero-code-line .tag { color: var(--pink-soft); }
+.hero-code-line .typed-code { color: var(--lavender); }
 .hero-code-line .cursor {
   display: inline-block;
   width: 9px; height: 1.05em;
@@ -1876,6 +1877,8 @@ button:focus-visible,
   vertical-align: text-bottom;
   animation: blinkCaret 1.1s step-end infinite;
 }
+/* while actively typing, keep the caret solid (no blink) */
+.hero-code-line.typing .cursor { animation: none; opacity: 1; }
 @keyframes blinkCaret { 50% { opacity: 0; } }
 
 /* ✦═══════════════════════════════════════════════════════════════✦

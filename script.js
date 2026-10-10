@@ -488,3 +488,43 @@ if (navToggle && navMenu) {
 
   revealEls.forEach((el) => revealObserver.observe(el));
 })();
+
+/* ══════════════════════════════════════════════════════════════
+   15. HERO CODE LINE — typewriter effect
+   Types out "<pretty mind + powerful logic />" character by character.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  const target = document.getElementById('typedCode');
+  if (!target) return;
+
+  const line = target.closest('.hero-code-line');
+  const fullText = target.getAttribute('data-text') || target.textContent || '';
+
+  // Respect reduced motion: just show the finished text
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    target.textContent = fullText;
+    return;
+  }
+
+  target.textContent = '';
+
+  let i = 0;
+  const typeSpeed = 55;   // ms per character
+  const startDelay = 900; // small pause after the page settles
+
+  function typeNext() {
+    if (i <= fullText.length) {
+      target.textContent = fullText.slice(0, i);
+      i += 1;
+      setTimeout(typeNext, typeSpeed + (Math.random() * 40 - 20)); // slight human jitter
+    } else {
+      // done typing — let the caret resume blinking
+      if (line) line.classList.remove('typing');
+    }
+  }
+
+  setTimeout(() => {
+    if (line) line.classList.add('typing');
+    typeNext();
+  }, startDelay);
+})();

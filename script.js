@@ -38,7 +38,7 @@ if (canHover) {
   });
 }
 
-const sparkleChars = ['✦', '✧', '·', '🌸', '♡'];
+const sparkleChars = ['✦', '✧', '·'];
 function spawnSparkle(x, y) {
   const s = document.createElement('div');
   s.className = 'sparkle';
@@ -331,13 +331,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => { document.body.style.opacity = '1'; }, 100);
 });
 
-console.log('✦ Portfolio of Dilpreet Choudhary ✦ Interactive & loaded with love 🎀');
+console.log('✦ Portfolio of Dilpreet Choudhary');
 
 /* ══════════════════════════════════════════════════════════════
-   11. PRISSY SPARKLES ON CONTACT CARD & BUTTON HOVER ✨
+   11. SUBTLE SPARKLES ON CONTACT CARD & BUTTON HOVER
    ══════════════════════════════════════════════════════════════ */
 const sparkleTargets = document.querySelectorAll('.contact-card, .btn-primary, .btn-secondary, .project-cta');
-const prissyChars = ['✦', '✧', '🎀', '♡', '🌸', '✨'];
+const prissyChars = ['✦', '✧', '·'];
 
 sparkleTargets.forEach((el) => {
   el.addEventListener('mouseenter', (e) => {

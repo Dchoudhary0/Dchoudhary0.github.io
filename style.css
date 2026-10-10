@@ -2020,6 +2020,7 @@ button:focus-visible,
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  justify-items: center;
 }
 .poster {
   position: relative;
@@ -2065,9 +2066,10 @@ button:focus-visible,
   color: var(--pink-light);
 }
 /* When an odd number of posters leaves the last one alone,
-   let it span the full width so no empty cell is left behind */
+   center it across both columns at normal size (no stretching) */
 .poster:last-child:nth-child(odd) {
   grid-column: 1 / -1;
+  max-width: calc(50% - 10px);
 }
 
 /* ─── Tectoro: interface preview mockup ─── */

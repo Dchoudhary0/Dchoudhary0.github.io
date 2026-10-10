@@ -240,7 +240,7 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
 
 document.querySelectorAll(
   '.timeline-item, .project-card, .skill-category, .stat-card, .contact-card, .edu-card, .about-card'
@@ -483,7 +483,7 @@ if (navToggle && navMenu) {
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.05, rootMargin: '0px 0px -10% 0px' }
   );
 
   revealEls.forEach((el) => revealObserver.observe(el));

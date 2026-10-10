@@ -981,9 +981,10 @@ section {
   font-weight: 500;
 }
 .tl-date {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: var(--text-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #8a1f5c;
   white-space: nowrap;
   background: var(--pink-light);
   padding: 5px 14px;
@@ -1142,6 +1143,26 @@ section {
   color: var(--text-mid);
   line-height: 1.75;
   margin-bottom: 18px;
+}
+.project-contribution {
+  font-size: 0.98rem;
+  color: #efe6f8;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  background: rgba(155, 107, 255, 0.12);
+  border-left: 3px solid var(--pink-mid);
+  border-radius: 8px;
+}
+.project-contribution strong {
+  color: var(--pink-soft);
+}
+.media-note {
+  font-size: 0.82rem;
+  color: #cbb9e4;
+  font-style: italic;
+  margin-top: 10px;
+  opacity: 0.95;
 }
 
 .project-tech {
@@ -1540,8 +1561,8 @@ section {
 /* ✦ ANIMATIONS ✦ */
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(18px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .fade-in.visible {
   opacity: 1;
@@ -1799,11 +1820,17 @@ button:focus-visible,
   color: var(--pink-light) !important;
 }
 .skill-pills span,
-.project-tech span,
+.project-tech span {
+  background: rgba(155, 107, 255, 0.2);
+  border: 1px solid rgba(201, 167, 255, 0.5);
+  color: #e9ddff;
+}
+/* Timeline tags sit on a dark glass card — bright text for readability */
 .tl-tags span {
-  background: rgba(155, 107, 255, 0.14);
-  border: 1px solid rgba(201, 167, 255, 0.3);
-  color: var(--lavender);
+  background: rgba(155, 107, 255, 0.22);
+  border: 1px solid rgba(201, 167, 255, 0.55);
+  color: #ede3ff;
+  font-weight: 600;
 }
 
 /* ─── Filter buttons ─── */
@@ -1933,8 +1960,8 @@ button:focus-visible,
 /* Reveal-on-scroll */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 [data-reveal].revealed {
   opacity: 1;
@@ -2017,17 +2044,16 @@ button:focus-visible,
 
 /* ─── Workshop marketing: pinned mini-poster wall ─── */
 .poster-wall {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  justify-items: center;
-  align-items: start;
+  column-count: 2;
+  column-gap: 20px;
 }
 .poster {
   position: relative;
   display: block;
-  align-self: start;
-  height: fit-content;
+  width: 100%;
+  margin-bottom: 20px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
   text-decoration: none;
   background: #1b1026;
   border-radius: 10px;
@@ -2144,8 +2170,8 @@ button:focus-visible,
 }
 .ui-tag {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--lavender);
+  font-size: 0.8rem;
+  color: #d9c6ff;
   letter-spacing: 0.03em;
 }
 

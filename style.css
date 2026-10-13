@@ -931,7 +931,7 @@ section {
   margin-top: 0;
 }
 .timeline-card.expanded .tl-body {
-  max-height: 900px;
+  max-height: 1200px;
   opacity: 1;
   margin-top: 16px;
 }
@@ -943,13 +943,38 @@ section {
   color: var(--text-dark);
   margin-bottom: 12px;
 }
-.tl-org a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px dotted currentColor;
+
+/* ✦ Cute link button inside experience cards ✦ */
+.tl-links {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-.tl-org a:hover {
-  color: var(--pink-rose);
+.tl-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--pink-soft), var(--pink-rose));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 14px rgba(226, 62, 134, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.tl-link-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 22px rgba(226, 62, 134, 0.5), 0 0 18px rgba(255, 214, 160, 0.4);
+  background: linear-gradient(135deg, var(--pink-mid), var(--pink-rose));
+}
+.tl-link-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 158, 203, 0.6);
 }
 
 .tl-expand-icon {

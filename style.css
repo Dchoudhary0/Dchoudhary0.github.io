@@ -944,37 +944,77 @@ section {
   margin-bottom: 12px;
 }
 
-/* ✦ Cute link button inside experience cards ✦ */
+/* ✦ Location line in experience card header ✦ */
+.tl-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 5px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--gold-bright);
+  opacity: 0.9;
+}
+
+/* ✦ Fancy animated link button inside experience cards ✦ */
 .tl-links {
-  margin-top: 16px;
+  margin-top: 18px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 .tl-link-btn {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 9px 18px;
+  gap: 7px;
+  padding: 11px 22px;
   border-radius: 50px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-decoration: none;
   color: var(--white);
-  background: linear-gradient(135deg, var(--pink-soft), var(--pink-rose));
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 4px 14px rgba(226, 62, 134, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  background: linear-gradient(120deg, var(--pink-soft), var(--pink-rose) 55%, var(--gold-bright));
+  background-size: 200% 200%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 6px 18px rgba(226, 62, 134, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  animation: tlBtnGlow 5s ease infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+/* subtle sweeping shine */
+.tl-link-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
 }
 .tl-link-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 8px 22px rgba(226, 62, 134, 0.5), 0 0 18px rgba(255, 214, 160, 0.4);
-  background: linear-gradient(135deg, var(--pink-mid), var(--pink-rose));
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(226, 62, 134, 0.55), 0 0 24px rgba(255, 214, 160, 0.55);
+}
+.tl-link-btn:hover::before {
+  left: 130%;
 }
 .tl-link-btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 158, 203, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 158, 203, 0.7), 0 6px 18px rgba(226, 62, 134, 0.4);
+}
+@keyframes tlBtnGlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tl-link-btn { animation: none; }
+  .tl-link-btn::before { transition: none; }
 }
 
 .tl-expand-icon {

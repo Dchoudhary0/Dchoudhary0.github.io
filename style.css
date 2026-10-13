@@ -931,7 +931,7 @@ section {
   margin-top: 0;
 }
 .timeline-card.expanded .tl-body {
-  max-height: 640px;
+  max-height: 900px;
   opacity: 1;
   margin-top: 16px;
 }

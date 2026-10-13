@@ -931,9 +931,25 @@ section {
   margin-top: 0;
 }
 .timeline-card.expanded .tl-body {
-  max-height: 400px;
+  max-height: 640px;
   opacity: 1;
   margin-top: 16px;
+}
+
+/* Optional intro line above the bullet list */
+.tl-intro {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.tl-org a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+.tl-org a:hover {
+  color: var(--pink-rose);
 }
 
 .tl-expand-icon {
